@@ -6,17 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import nl.svdoetelaar.madlevel2task1.databinding.ItemPlaceBinding
 
-public class PlaceAdapter(private val places: List<Place>) :
+class PlaceAdapter(private val places: List<Place>) :
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View):
-            RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
 
-        val binding = ItemPlaceBinding.bind(itemView)
+        private val binding = ItemPlaceBinding.bind(itemView)
 
-        fun databind(place: Place) {
-            binding.tvLocationName.text = place.name
-            binding.ivLocationImage.setImageResource(place.imageResId)
+        fun dataBind(place: Place) {
+            binding.tvPlace.text = place.name
+            binding.ivPlace.setImageResource(place.imageResId)
         }
     }
 
@@ -27,7 +27,7 @@ public class PlaceAdapter(private val places: List<Place>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.databind(places[position])
+        holder.dataBind(places[position])
     }
 
     override fun getItemCount(): Int {
